@@ -1,7 +1,7 @@
 {
   "name": "react-shorten-url",
   "version": "1.0.0-beta.1",
-  "description": "",
+  "description": "Bitly implementation to React hook",
   "author": "Jakub Biesiada",
   "license": "MIT",
   "main": "lib/react-shorten-url.cjs.js",
@@ -21,6 +21,7 @@
     "url": "https://github.com/cool-hooks/react-shorten-url.git"
   },
   "keywords": [
+    "bitly",
     "url",
     "shorten",
     "hooks",
