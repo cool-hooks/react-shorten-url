@@ -23,9 +23,7 @@ $ yarn add react-shorten-url
 
 ## Getting Started
 
-#### Returned Values
-
-#### Example
+**• Import `ShortenUrlProvider` from library in your React app, wrap main component and set config values:**
 
 ```js
 // index.js
@@ -44,9 +42,11 @@ ReactDOM.render(
 );
 ```
 
-**`useShortenUrl` hook:**
+**• Then use `useShortenUrl` Hook:**
 
 ```js
+// App.js
+
 import React from 'react';
 import { useShortenUrl } from 'react-shorten-url';
 
@@ -61,9 +61,11 @@ const App = () => {
 export default App;
 ```
 
-**`withShortenUrl` HOC:**
+**• Or `withShortenUrl` HOC:**
 
 ```js
+// App.js
+
 import React from 'react';
 import { withShortenUrl } from 'react-shorten-url';
 
