@@ -1,9 +1,10 @@
 import React from 'react';
 import { BitlyClient } from 'bitly';
+import { BitlyConfig } from 'bitly/dist/types';
 
 interface Config {
   accessToken: string;
-  options: any;
+  options?: BitlyConfig;
 }
 
 export const ShortenUrlContext = React.createContext<{
