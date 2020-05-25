@@ -9,7 +9,6 @@ module.exports = {
   env: {
     browser: true,
     node: true,
-    jest: true,
   },
   parserOptions: {
     ecmaVersion: 6,
