@@ -32,7 +32,7 @@ $ yarn add react-shorten-url
 | accessToken | string      | ` `     | Bitly access token      |
 | options     | BitlyConfig | `{}`    | Additional Bitly config |
 
-### useQrEncode
+### useShortenUrl
 
 #### Options
 
