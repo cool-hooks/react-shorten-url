@@ -15,13 +15,13 @@ export const useShortenUrl = (url: string) => {
       setLoading(true);
 
       try {
-        setLoading(false);
-
         setData(await bitly.shorten(url));
-      } catch (err) {
-        setLoading(false);
 
+        setLoading(false);
+      } catch (err) {
         setError(err);
+
+        setLoading(false);
       }
     };
 

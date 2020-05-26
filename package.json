@@ -1,6 +1,6 @@
 {
   "name": "react-shorten-url",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Bitly implementation to React hook",
   "author": "Jakub Biesiada",
   "license": "MIT",
