@@ -23,6 +23,33 @@ $ yarn add react-shorten-url
 
 ## Getting Started
 
+### ShortenUrlProvider
+
+#### Config Param Values
+
+| Name        | Type        | Default | Description             |
+| ----------- | ----------- | ------- | ----------------------- |
+| accessToken | string      | ` `     | Bitly access token      |
+| options     | BitlyConfig | `{}`    | Additional Bitly config |
+
+### useQrEncode
+
+#### Options
+
+| Name | Type   | Default | Description    |
+| ---- | ------ | ------- | -------------- |
+| url  | string | ` `     | URL to shorten |
+
+#### Returned Values
+
+| Name    | Type      | Description              |
+| ------- | --------- | ------------------------ |
+| loading | boolean   | Is data loading          |
+| error   | Error     | Error shortening URL     |
+| data    | BitlyLink | Data returned from Bitly |
+
+## Example
+
 **• Import `ShortenUrlProvider` from library in your React app, wrap main component and set config values:**
 
 ```js
@@ -51,31 +78,16 @@ import React from 'react';
 import { useShortenUrl } from 'react-shorten-url';
 
 const App = () => {
-  const { shorten } = useShortenUrl();
+  const { loading, error, data } = useShortenUrl('http://example.com/');
 
-  const shortenUrl = shorten('http://example.com/');
+  if (loading) return <p>Loading...</p>;
 
-  return <h1>{shortenUrl}</h1>;
+  if (error) return <p>Something went wrong</p>;
+
+  return <h1>{data.link}</h1>;
 };
 
 export default App;
-```
-
-**• Or `withShortenUrl` HOC:**
-
-```js
-// App.js
-
-import React from 'react';
-import { withShortenUrl } from 'react-shorten-url';
-
-const App = ({ shorten }) => {
-  const shortenUrl = shorten('http://example.com/');
-
-  return <h1>{shortenUrl}</h1>;
-};
-
-export default withShortenUrl()(App);
 ```
 
 ## License
