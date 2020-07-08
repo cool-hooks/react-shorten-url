@@ -1,4 +1,6 @@
 src
+__tests__
+coverage
 
 tsconfig.json
 .travis.yml
