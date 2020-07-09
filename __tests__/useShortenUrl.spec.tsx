@@ -4,24 +4,31 @@ import { BitlyConfig } from 'bitly/dist/types';
 
 import { ShortenUrlProvider, useShortenUrl } from '../src';
 
+interface Config {
+  accessToken: string;
+  options?: BitlyConfig;
+}
+
 jest.mock('bitly', () => ({
-  BitlyClient: (accessToken: string, options: BitlyConfig) => ({
-    shorten: () => 'https://bit.ly/2BN8vLY',
+  BitlyClient: (accessToken: string, options?: BitlyConfig) => ({
+    shorten: () =>
+      jest
+        .fn()
+        .mockReturnValueOnce('https://bit.ly/2BN8vLY')
+        .mockReturnValueOnce(new Error()),
   }),
 }));
 
 describe('useShortenUrl', () => {
-  it('should return shorten URL', async () => {
-    const makeWrapper = (config: any): React.FC => ({
-      children,
-    }: {
-      children?: React.ReactNode;
-    }) => <ShortenUrlProvider config={config}>{children}</ShortenUrlProvider>;
+  const makeWrapper = (config: Config): React.FC => ({ children }) => (
+    <ShortenUrlProvider config={config}>{children}</ShortenUrlProvider>
+  );
 
+  it('should return shorten URL', async () => {
     const { result, waitForNextUpdate } = renderHook(
       () => useShortenUrl('http://example.com/'),
       {
-        wrapper: makeWrapper({ accessToken: '' }),
+        wrapper: makeWrapper({ accessToken: 'q1w2e3r4t5y6' }),
       }
     );
 
