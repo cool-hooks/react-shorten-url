@@ -10,7 +10,7 @@ interface Config {
 }
 
 jest.mock('bitly', () => ({
-  BitlyClient: (accessToken: string, options?: BitlyConfig) => ({
+  BitlyClient: (..._: any) => ({
     shorten: () =>
       jest
         .fn()
