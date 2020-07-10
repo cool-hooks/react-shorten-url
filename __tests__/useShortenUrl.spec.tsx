@@ -11,11 +11,7 @@ interface Config {
 
 jest.mock('bitly', () => ({
   BitlyClient: (..._: any) => ({
-    shorten: () =>
-      jest
-        .fn()
-        .mockReturnValueOnce('https://bit.ly/2BN8vLY')
-        .mockReturnValueOnce(new Error()),
+    shorten: () => jest.fn().mockReturnValue('https://bit.ly/2BN8vLY'),
   }),
 }));
 
