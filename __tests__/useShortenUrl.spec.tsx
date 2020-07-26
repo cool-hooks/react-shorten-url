@@ -10,8 +10,17 @@ interface Config {
 }
 
 jest.mock('bitly', () => ({
-  BitlyClient: (..._: any) => ({
-    shorten: () => jest.fn().mockReturnValue('https://bit.ly/2BN8vLY'),
+  BitlyClient: (accessToken: string, _?: BitlyConfig) => ({
+    shorten: () => {
+      console.log(accessToken);
+
+      if (accessToken) {
+        return jest.fn().mockReturnValueOnce('https://bit.ly/2BN8vLY');
+      } else {
+        throw new Error();
+        // return jest.fn().mockReturnValueOnce(new Error());
+      }
+    },
   }),
 }));
 
@@ -37,5 +46,29 @@ describe('useShortenUrl', () => {
     expect(result.current.loading).toBe(false);
     expect(result.current.error).toBe(null);
     expect(result.current.data).toBe('https://bit.ly/2BN8vLY');
+  });
+});
+
+describe('useShortenUrl', () => {
+  const makeWrapper = (config: Config): React.FC => ({ children }) => (
+    <ShortenUrlProvider config={config}>{children}</ShortenUrlProvider>
+  );
+
+  it('should return shorten URL', async () => {
+    const { result, waitForNextUpdate } = renderHook(
+      () => useShortenUrl('http://example.com/'),
+      {
+        wrapper: makeWrapper({
+          accessToken: '',
+          options: {
+            debug: true,
+          },
+        }),
+      }
+    );
+
+    expect(result.current.loading).toBe(false);
+    expect(result.current.error).toBe(new Error());
+    expect(result.current.data).toBe(undefined);
   });
 });
