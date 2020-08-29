@@ -12,13 +12,10 @@ interface Config {
 jest.mock('bitly', () => ({
   BitlyClient: (accessToken: string, _?: BitlyConfig) => ({
     shorten: () => {
-      console.log(accessToken);
-
       if (accessToken) {
         return jest.fn().mockReturnValueOnce('https://bit.ly/2BN8vLY');
       } else {
         throw new Error();
-        // return jest.fn().mockReturnValueOnce(new Error());
       }
     },
   }),
@@ -54,21 +51,18 @@ describe('useShortenUrl', () => {
     <ShortenUrlProvider config={config}>{children}</ShortenUrlProvider>
   );
 
-  it('should return shorten URL', async () => {
-    const { result, waitForNextUpdate } = renderHook(
-      () => useShortenUrl('http://example.com/'),
-      {
-        wrapper: makeWrapper({
-          accessToken: '',
-          options: {
-            debug: true,
-          },
-        }),
-      }
-    );
+  it('should throw an error', async () => {
+    const { result } = renderHook(() => useShortenUrl('http://example.com/'), {
+      wrapper: makeWrapper({
+        accessToken: '',
+        options: {
+          debug: true,
+        },
+      }),
+    });
 
     expect(result.current.loading).toBe(false);
-    expect(result.current.error).toBe(new Error());
+    expect(result.current.error).toMatchObject(new Error());
     expect(result.current.data).toBe(undefined);
   });
 });
