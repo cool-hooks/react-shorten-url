@@ -3,6 +3,7 @@
 [![NPM version](http://img.shields.io/npm/v/react-shorten-url?style=flat-square)](https://www.npmjs.com/package/react-shorten-url)
 [![NPM downloads](http://img.shields.io/npm/dm/react-shorten-url?style=flat-square)](https://www.npmjs.com/package/react-shorten-url)
 [![NPM license](https://img.shields.io/npm/l/react-shorten-url?style=flat-square)](https://www.npmjs.com/package/react-shorten-url)
+[![Codecov](https://img.shields.io/codecov/c/github/cool-hooks/react-shorten-url?style=flat-square)](https://codecov.io/gh/cool-hooks/react-shorten-url)
 [![Travis](https://img.shields.io/travis/cool-hooks/react-shorten-url/master?style=flat-square)](https://travis-ci.org/cool-hooks/react-shorten-url)
 [![Bundle size](https://img.shields.io/bundlephobia/min/react-shorten-url?style=flat-square)](https://bundlephobia.com/result?p=react-shorten-url)
 
