@@ -15,12 +15,12 @@ interface Config {
   readonly options?: BitlyConfig;
 }
 
-interface ProviderProps {
+interface Props {
   readonly children: React.ReactNode;
   readonly config: Config;
 }
 
-export const ShortenUrlProvider = ({ children, config }: ProviderProps) => {
+export const ShortenUrlProvider = ({ children, config }: Props) => {
   const { accessToken, options = {} } = config;
 
   const bitly = new BitlyClient(accessToken, options);
