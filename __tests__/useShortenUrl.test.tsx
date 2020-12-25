@@ -28,7 +28,7 @@ describe('useShortenUrl', () => {
 
   it('should return shorten URL', async () => {
     const { result, waitForNextUpdate } = renderHook(
-      () => useShortenUrl('http://example.com/'),
+      () => useShortenUrl('https://example.com/'),
       {
         wrapper: makeWrapper({ accessToken: 'q1w2e3r4t5y6' }),
       }
@@ -52,7 +52,7 @@ describe('useShortenUrl', () => {
   );
 
   it('should throw an error', async () => {
-    const { result } = renderHook(() => useShortenUrl('http://example.com/'), {
+    const { result } = renderHook(() => useShortenUrl('https://example.com/'), {
       wrapper: makeWrapper({
         accessToken: '',
         options: {
