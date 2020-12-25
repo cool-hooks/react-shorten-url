@@ -1,5 +1,6 @@
-import { useEffect, useContext } from 'react';
+import { useEffect } from 'react';
 import { useGroupState } from 'react-group-state';
+import { useSafeContext } from 'react-safe-context-hooks';
 import { BitlyLink } from 'bitly/dist/types';
 
 import { ShortenUrlContext } from './context';
@@ -11,11 +12,7 @@ interface State {
 }
 
 export const useShortenUrl = (url: string) => {
-  const context = useContext(ShortenUrlContext);
-
-  if (context === undefined) {
-    throw new Error('ShortenUrlContext is not defined');
-  }
+  const context = useSafeContext(ShortenUrlContext);
 
   const { bitly } = context;
 

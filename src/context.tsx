@@ -10,6 +10,8 @@ export const ShortenUrlContext = React.createContext<ContextProps>({
   bitly: {} as BitlyClient,
 });
 
+ShortenUrlContext.displayName = 'ShortenUrlContext';
+
 interface Config {
   readonly accessToken: string;
   readonly options?: BitlyConfig;
