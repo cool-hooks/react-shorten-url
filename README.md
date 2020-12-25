@@ -1,7 +1,7 @@
 # [react-shorten-url](https://github.com/cool-hooks/react-shorten-url)
 
-[![NPM version](http://img.shields.io/npm/v/react-shorten-url?style=flat-square)](https://www.npmjs.com/package/react-shorten-url)
-[![NPM downloads](http://img.shields.io/npm/dm/react-shorten-url?style=flat-square)](https://www.npmjs.com/package/react-shorten-url)
+[![NPM version](https://img.shields.io/npm/v/react-shorten-url?style=flat-square)](https://www.npmjs.com/package/react-shorten-url)
+[![NPM downloads](https://img.shields.io/npm/dm/react-shorten-url?style=flat-square)](https://www.npmjs.com/package/react-shorten-url)
 [![NPM license](https://img.shields.io/npm/l/react-shorten-url?style=flat-square)](https://www.npmjs.com/package/react-shorten-url)
 [![Codecov](https://img.shields.io/codecov/c/github/cool-hooks/react-shorten-url?style=flat-square)](https://codecov.io/gh/cool-hooks/react-shorten-url)
 [![Travis](https://img.shields.io/travis/cool-hooks/react-shorten-url/master?style=flat-square)](https://travis-ci.org/cool-hooks/react-shorten-url)
@@ -86,7 +86,7 @@ import React from 'react';
 import { useShortenUrl } from 'react-shorten-url';
 
 const App = () => {
-  const { loading, error, data } = useShortenUrl('http://example.com/');
+  const { loading, error, data } = useShortenUrl('https://example.com/');
 
   if (loading) return <p>Loading...</p>;
 
