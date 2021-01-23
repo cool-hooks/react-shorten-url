@@ -44,12 +44,6 @@ describe('useShortenUrl', () => {
     expect(result.current.error).toBe(null);
     expect(result.current.data).toBe('https://bit.ly/2BN8vLY');
   });
-});
-
-describe('useShortenUrl', () => {
-  const makeWrapper = (config: Config): React.FC => ({ children }) => (
-    <ShortenUrlProvider config={config}>{children}</ShortenUrlProvider>
-  );
 
   it('should throw an error', async () => {
     const { result } = renderHook(() => useShortenUrl('http://example.com/'), {
