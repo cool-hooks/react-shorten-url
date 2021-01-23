@@ -8,12 +8,12 @@ interface Config {
 }
 
 export const ShortenUrlContext = React.createContext<{
-  bitly: BitlyClient;
+  readonly bitly: BitlyClient;
 }>({
   bitly: {} as BitlyClient,
 });
 
-export const ShortenUrlProvider: React.FC<{ config: Config }> = ({
+export const ShortenUrlProvider: React.FC<{ readonly config: Config }> = ({
   children,
   config,
 }) => {
