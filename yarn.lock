@@ -6813,11 +6813,6 @@ react-error-boundary@^3.1.0:
   dependencies:
     "@babel/runtime" "^7.12.5"
 
-react-group-state@^0.0.1:
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/react-group-state/-/react-group-state-0.0.1.tgz#02823e4f5c94c20b588b295f2c348db6b04f24ca"
-  integrity sha512-9rDLHkJsRqgIVsMSrnlbS5w8PYntRlFlzxPqPySCM+CkLs4230WMtdOj8LI6oCZd9KdR3KvTcTuG8kYBprIXKA==
-
 react-is@^16.12.0, react-is@^16.8.1, react-is@^16.8.6:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"

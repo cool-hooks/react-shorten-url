@@ -37,7 +37,6 @@
   "homepage": "https://github.com/cool-hooks/react-shorten-url#readme",
   "dependencies": {
     "bitly": "^7.1.2",
-    "react-group-state": "^0.0.1",
     "react-safe-context-hooks": "^1.0.0"
   },
   "devDependencies": {
