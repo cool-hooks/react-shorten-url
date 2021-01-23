@@ -1,5 +1,4 @@
-import { useState, useEffect } from 'react';
-import { useSafeContext } from 'react-safe-context-hooks';
+import { useState, useEffect, useContext } from 'react';
 import { BitlyLink } from 'bitly/dist/types';
 
 import { ShortenUrlContext } from './context';
@@ -9,7 +8,7 @@ export const useShortenUrl = (url: string) => {
   const [error, setError] = useState<Error | null>(null);
   const [data, setData] = useState<BitlyLink>();
 
-  const { bitly } = useSafeContext(ShortenUrlContext);
+  const { bitly } = useContext(ShortenUrlContext);
 
   useEffect(() => {
     const shorten = async () => {
