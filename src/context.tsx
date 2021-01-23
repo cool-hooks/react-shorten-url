@@ -13,6 +13,8 @@ export const ShortenUrlContext = React.createContext<{
   bitly: {} as BitlyClient,
 });
 
+ShortenUrlContext.displayName = 'ShortenUrlContext';
+
 export const ShortenUrlProvider: React.FC<{ readonly config: Config }> = ({
   children,
   config,
