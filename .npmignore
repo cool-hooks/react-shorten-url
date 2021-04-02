@@ -1,6 +1,7 @@
 src
 __tests__
 coverage
+.husky
 
 tsconfig.json
 .travis.yml
