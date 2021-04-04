@@ -4,7 +4,7 @@ import { BitlyLink } from 'bitly/dist/types';
 
 import { ShortenUrlContext } from './context';
 
-export const useShortenUrl = (url: string) => {
+export const useShortenUrl = (url: string, {}: any) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<Error | null>(null);
   const [data, setData] = useState<BitlyLink>();
