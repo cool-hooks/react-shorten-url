@@ -13,7 +13,7 @@
 
 ### Demo
 
-**[Playground – play with library in CodeSandbox](https://codesandbox.io/s/react-shorten-url-9t2gc)**
+**[Playground – play with the library in CodeSandbox](https://codesandbox.io/s/react-shorten-url-9t2gc)**
 
 ### Similar Projects
 
