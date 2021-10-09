@@ -10,5 +10,5 @@
 
 #### New Feature
 
-- added `ShortenUrlProvider`
-- added `useShortenUrl` hook
+- added the `ShortenUrlProvider`
+- added the `useShortenUrl` hook
