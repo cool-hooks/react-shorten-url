@@ -1,13 +1,12 @@
 import React from 'react';
 import { BitlyClient } from 'bitly';
-import { BitlyConfig } from 'bitly/dist/types'; // TODO
+import { BitlyConfig } from 'bitly/dist/types';
 
 export interface Config {
   readonly accessToken: string;
   readonly options?: BitlyConfig;
 }
 
-// TODO
 export const ShortenUrlContext = React.createContext<
   | {
       readonly bitly: BitlyClient;
@@ -20,8 +19,7 @@ ShortenUrlContext.displayName = 'ShortenUrlContext';
 export const ShortenUrlProvider = ({
   children,
   config,
-}: // TODO
-{
+}: {
   readonly config: Config;
   readonly children: React.ReactNode;
 }) => {

@@ -4,56 +4,50 @@ import { BitlyLink } from 'bitly/dist/types';
 
 import { ShortenUrlContext } from './context';
 
+type BitlyError = Error | null | unknown; // TODO update type
+type Status = 'loading' | 'success' | 'error' | 'stale';
+
 interface Options {
- readonly enabled: boolean;
-  onSuccess: (data: any) => any // TODO
-  onError: (err: any) => any // TODO
+  readonly enabled: boolean;
+  onSuccess: (data: BitlyLink) => void;
+  onError: (err: BitlyError) => void;
 }
 
-// useShortenUrl = () => {}
-// useShortenUrl = (url: string, enabled: boolean) => {}
-export const useShortenUrl = (url: string, { enabled = true, onSuccess, onError }: Options) => {
+export const useShortenUrl = (
+  url: string,
+  { enabled = true, onSuccess, onError }: Options
+) => {
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<Error | null>(null);
+  const [error, setError] = useState<BitlyError>(null);
   const [data, setData] = useState<BitlyLink>();
-  const [status, setStatus] = useState<'loading' | 'success' | 'error' | 'stale'>('stale')
+  const [status, setStatus] = useState<Status>('stale');
 
   const { bitly } = useSafeContext(ShortenUrlContext);
 
   const shorten = useCallback(async () => {
     setLoading(true);
-    setStatus('loading')
+    setStatus('loading');
 
     try {
-      const res = await bitly.shorten(url)
+      const res = await bitly.shorten(url);
 
       setData(res);
-      onSuccess(res)
-      setStatus('success')
+      onSuccess(res);
+      setStatus('success');
     } catch (err) {
       setError(err);
-      onError(err)
-      setStatus('error')
+      onError(err);
+      setStatus('error');
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [bitly, onError, onSuccess, url]);
 
   useEffect(() => {
     if (enabled) {
       shorten();
     }
-  }, [bitly, url]);
+  }, [bitly, enabled, shorten, url]);
 
   return { loading, error, data, refetch: shorten, status };
-  // return { loading, error, data, refetch: shorten };
 };
-
-// refetch -> trigger/call
-
-
-// const {loading, error, data, status, refetch} = useShortenUrl()
-// refetch(url)???
-
-// params
-// { onError, onSuccess }

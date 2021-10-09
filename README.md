@@ -37,8 +37,8 @@ $ yarn add react-shorten-url
 
 | Name        | Type        | Default | Description             |
 | ----------- | ----------- | ------- | ----------------------- |
-| accessToken | string      | ` `     | Bitly access token      |
-| options     | BitlyConfig | `{}`    | Additional Bitly config |
+| **accessToken** | string      | ` `     | Bitly access token      |
+| **options**     | BitlyConfig | `{}`    | Additional Bitly config |
 
 ### useShortenUrl
 
@@ -46,15 +46,15 @@ $ yarn add react-shorten-url
 
 | Name | Type   | Default | Description    |
 | ---- | ------ | ------- | -------------- |
-| url  | string | ` `     | URL to shorten |
+| **url**  | string | ` `     | URL to shorten |
 
 #### Returned Values
 
 | Name    | Type      | Description              |
 | ------- | --------- | ------------------------ |
-| loading | boolean   | Is data loading          |
-| error   | Error     | Error shortening URL     |
-| data    | BitlyLink | Data returned from Bitly |
+| **loading** | boolean   | Is data loading          |
+| **error**   | Error     | Error shortening URL     |
+| **data**    | BitlyLink | Data returned from Bitly |
 
 ## Example
 
