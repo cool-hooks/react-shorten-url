@@ -11,6 +11,10 @@
 
 [Bitly](https://github.com/tanepiper/node-bitly/) implementation to React hook
 
+### Demo
+
+**[Playground – play with library in CodeSandbox](https://codesandbox.io/s/react-shorten-url-9t2gc)**
+
 ### Similar Projects
 
 - [bitly-field-react](https://github.com/massoprod/bitly-field-react/) by [patrik_masiar](https://github.com/massoprod/)
