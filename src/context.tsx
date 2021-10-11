@@ -3,15 +3,11 @@ import { BitlyClient } from 'bitly';
 import { BitlyConfig } from 'bitly/dist/types';
 
 interface Config {
-  accessToken: string;
-  options?: BitlyConfig;
+  readonly accessToken: string;
+  readonly options?: BitlyConfig;
 }
 
-export const ShortenUrlContext = React.createContext<{
-  readonly bitly: BitlyClient;
-}>({
-  bitly: {} as BitlyClient,
-});
+export const ShortenUrlContext = React.createContext({} as BitlyClient);
 
 ShortenUrlContext.displayName = 'ShortenUrlContext';
 
@@ -24,8 +20,10 @@ export const ShortenUrlProvider: React.FC<{ readonly config: Config }> = ({
   const bitly = new BitlyClient(accessToken, options);
 
   return (
-    <ShortenUrlContext.Provider value={{ bitly }}>
+    <ShortenUrlContext.Provider value={bitly}>
       {children}
     </ShortenUrlContext.Provider>
   );
 };
+
+ShortenUrlProvider.displayName = 'ShortenUrlProvider';

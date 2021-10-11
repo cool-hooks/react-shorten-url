@@ -9,7 +9,7 @@ export const useShortenUrl = (url: string) => {
   const [error, setError] = useState<Error | null>(null);
   const [data, setData] = useState<BitlyLink>();
 
-  const { bitly } = useSafeContext(ShortenUrlContext);
+  const bitly = useSafeContext(ShortenUrlContext);
 
   useEffect(() => {
     const shorten = async () => {
