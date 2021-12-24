@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { BitlyClient } from 'bitly';
 import { BitlyConfig } from 'bitly/dist/types';
 
@@ -16,16 +16,18 @@ export const ShortenUrlContext = React.createContext<
 
 ShortenUrlContext.displayName = 'ShortenUrlContext';
 
-export const ShortenUrlProvider = ({
-  children,
-  config,
-}: {
+interface Props {
   readonly config: Config;
   readonly children: React.ReactNode;
-}) => {
+}
+
+export const ShortenUrlProvider = ({ children, config }: Props) => {
   const { accessToken, options = {} } = config;
 
-  const bitly = new BitlyClient(accessToken, options);
+  const bitly = useMemo(
+    () => new BitlyClient(accessToken, options),
+    [accessToken, options]
+  );
 
   return (
     <ShortenUrlContext.Provider value={{ bitly }}>
