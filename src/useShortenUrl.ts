@@ -1,12 +1,11 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useEffect, useCallback } from 'react';
 import { useSafeContext } from 'react-safe-context-hooks';
-// import { useGroupState } from 'react-group-state';
+import { useGroupState } from 'react-group-state';
 import { BitlyLink } from 'bitly/dist/types';
 
 import { ShortenUrlContext } from './context';
 
 type BitlyError = Error | null | unknown; // TODO update type
-type Status = 'loading' | 'success' | 'error' | 'stale';
 
 interface Options {
   readonly enabled: boolean;
@@ -14,45 +13,84 @@ interface Options {
   readonly onError: (err: BitlyError) => void;
 }
 
-// interface State {
-//   readonly loading: boolean;
-//   readonly error: BitlyError;
-//   readonly data?: BitlyLink;
-//   readonly status: Status;
-// }
+interface StateLoading {
+  readonly status: 'loading';
+  readonly loading: true;
+  readonly error: null;
+  readonly data: undefined;
+}
+
+interface StateSuccess {
+  readonly status: 'success';
+  readonly loading: false;
+  readonly error: null;
+  readonly data: BitlyLink;
+}
+
+interface StateError {
+  readonly status: 'error';
+  readonly loading: false;
+  readonly error: BitlyError;
+  // readonly error: Error;
+  readonly data: undefined;
+}
+
+interface StateStale {
+  readonly status: 'stale';
+  readonly loading: false;
+  readonly error: null;
+  readonly data: undefined;
+}
+
+type State = StateLoading | StateSuccess | StateError | StateStale;
 
 export const useShortenUrl = (
   url: string,
   { enabled = true, onSuccess, onError } = {} as Options
 ) => {
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<BitlyError>(null);
-  const [data, setData] = useState<BitlyLink>();
-  const [status, setStatus] = useState<Status>('stale');
+  // TODO make full object required
+  const [state, setState] = useGroupState<State>({
+    status: 'stale',
+    loading: false,
+    error: null,
+    data: undefined,
+  });
 
   const {
     bitly: { shorten: bitlyShorten },
   } = useSafeContext(ShortenUrlContext);
 
   const shorten = useCallback(async () => {
-    setLoading(true);
-    setStatus('loading');
+    setState({
+      status: 'loading',
+      loading: true,
+      error: null,
+      data: undefined,
+    });
 
     try {
       const res = await bitlyShorten(url);
 
-      setData(res);
+      setState({
+        status: 'success',
+        loading: false,
+        error: null,
+        data: res,
+      });
+
       onSuccess(res);
-      setStatus('success');
     } catch (err) {
       // TODO typeguard
-      setError(err);
+      setState({
+        status: 'error',
+        loading: false,
+        error: err,
+        data: undefined,
+      });
+
       onError(err);
-      setStatus('error');
-    } finally {
-      setLoading(false);
     }
-  }, [onError, onSuccess, bitlyShorten, url]);
+  }, [bitlyShorten, onError, onSuccess, setState, url]);
 
   useEffect(() => {
     if (enabled) {
@@ -60,5 +98,5 @@ export const useShortenUrl = (
     }
   }, [shorten, enabled]);
 
-  return { loading, error, data, refetch: shorten, status };
+  return { ...state, refetch: shorten };
 };
