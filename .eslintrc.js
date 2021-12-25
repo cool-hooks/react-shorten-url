@@ -14,9 +14,6 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 6,
     sourceType: 'module',
-    ecmaFeatures: {
-      jsx: true,
-    },
   },
   rules: {
     'react-hooks/rules-of-hooks': 'error',

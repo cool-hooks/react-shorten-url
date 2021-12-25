@@ -1,16 +1,17 @@
 {
   "name": "react-shorten-url",
   "version": "1.0.5",
-  "description": "Bitly implementation to React hook",
+  "description": "Bitly implementation into the React hook",
   "author": "Jakub Biesiada",
   "license": "MIT",
   "main": "lib/react-shorten-url.cjs.js",
   "module": "lib/react-shorten-url.esm.js",
   "types": "lib/index.d.ts",
   "scripts": {
-    "prepack": "npm run clean && npm run prettier && npm run lint && npm run build",
+    "prepack": "npm run prettier && npm run lint && npm run build",
     "clean": "rimraf lib/*",
     "build": "rollup -c",
+    "prebuild": "npm run clean",
     "test": "jest --coverage",
     "watch": "npm run build -- --watch",
     "watch:test": "npm run test -- --watch",
@@ -26,12 +27,12 @@
     "url": "https://github.com/cool-hooks/react-shorten-url.git"
   },
   "keywords": [
-    "bitly",
-    "url",
-    "shorten",
-    "hooks",
     "react",
-    "library"
+    "url",
+    "hooks",
+    "library",
+    "bitly",
+    "shorten"
   ],
   "bugs": {
     "url": "https://github.com/cool-hooks/react-shorten-url/issues"
@@ -40,32 +41,32 @@
   "dependencies": {
     "bitly": "^7.1.2",
     "react-group-state": "^1.0.0-beta.3",
-    "react-safe-context-hooks": "^1.0.0"
+    "react-safe-context-hooks": "^1.0.1"
   },
   "devDependencies": {
-    "@rollup/plugin-node-resolve": "^11.2.1",
-    "@testing-library/react-hooks": "^5.1.1",
-    "@types/jest": "^26.0.22",
-    "@types/react": "^17.0.3",
-    "@typescript-eslint/parser": "^4.20.0",
+    "@rollup/plugin-node-resolve": "^13.1.1",
+    "@testing-library/react-hooks": "^7.0.2",
+    "@types/jest": "^27.0.3",
+    "@types/react": "^17.0.38",
+    "@typescript-eslint/parser": "^5.8.0",
     "cz-conventional-changelog": "3.3.0",
-    "eslint": "^7.23.0",
-    "eslint-config-prettier": "^8.1.0",
-    "eslint-plugin-prettier": "^3.3.1",
-    "eslint-plugin-react": "^7.23.1",
-    "eslint-plugin-react-hooks": "^4.2.0",
-    "husky": "^6.0.0",
-    "jest": "^26.6.3",
-    "lint-staged": "^10.5.4",
-    "prettier": "^2.2.1",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
+    "eslint": "^8.5.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.28.0",
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "husky": "^7.0.4",
+    "jest": "^27.4.5",
+    "lint-staged": "^12.1.4",
+    "prettier": "^2.5.1",
+    "react": "^17.0.2",
     "react-test-renderer": "^17.0.2",
+    "rollup": "^2.62.0",
     "rollup-plugin-terser": "^7.0.2",
-    "rollup-plugin-typescript2": "^0.30.0",
-    "semantic-release": "^17.4.2",
-    "ts-jest": "^26.5.4",
-    "typescript": "^4.2.3"
+    "rollup-plugin-typescript2": "^0.31.1",
+    "semantic-release": "^18.0.1",
+    "ts-jest": "^27.1.2",
+    "typescript": "^4.5.4"
   },
   "peerDependencies": {
     "react": ">=16.8.0"

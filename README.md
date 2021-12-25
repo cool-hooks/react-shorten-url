@@ -4,12 +4,12 @@
 [![NPM downloads](https://img.shields.io/npm/dm/react-shorten-url?style=flat-square)](https://www.npmjs.com/package/react-shorten-url)
 [![NPM license](https://img.shields.io/npm/l/react-shorten-url?style=flat-square)](https://www.npmjs.com/package/react-shorten-url)
 [![Codecov](https://img.shields.io/codecov/c/github/cool-hooks/react-shorten-url?style=flat-square)](https://codecov.io/gh/cool-hooks/react-shorten-url)
-[![Travis](https://img.shields.io/travis/com/cool-hooks/react-shorten-url/main?style=flat-square)](https://travis-ci.com/cool-hooks/react-shorten-url)
+[![Travis](https://img.shields.io/travis/com/cool-hooks/react-shorten-url/main?style=flat-square)](https://app.travis-ci.com/github/cool-hooks/react-shorten-url)
 [![Bundle size](https://img.shields.io/bundlephobia/min/react-shorten-url?style=flat-square)](https://bundlephobia.com/result?p=react-shorten-url)
 
 ## About
 
-[Bitly](https://github.com/tanepiper/node-bitly/) implementation to React hook
+[Bitly](https://github.com/tanepiper/node-bitly/) implementation into the React hook
 
 ### Demo
 
@@ -39,30 +39,32 @@ $ yarn add react-shorten-url
 
 #### Config Param Values
 
-| Name        | Type        | Default | Description             |
-| ----------- | ----------- | ------- | ----------------------- |
-| accessToken | string      | ` `     | Bitly access token      |
-| options     | BitlyConfig | `{}`    | Additional Bitly config |
+| Name            | Type        | Default | Description             |
+| --------------- | ----------- | ------- | ----------------------- |
+| **accessToken** | string      | ` `     | Bitly access token      |
+| **options**     | BitlyConfig | `{}`    | Additional Bitly config |
 
 ### useShortenUrl
 
 #### Options
 
-| Name | Type   | Default | Description    |
-| ---- | ------ | ------- | -------------- |
-| url  | string | ` `     | URL to shorten |
+| Name    | Type   | Default | Description    |
+| ------- | ------ | ------- | -------------- |
+| **url** | string | ` `     | URL to shorten |
 
 #### Returned Values
 
-| Name    | Type      | Description              |
-| ------- | --------- | ------------------------ |
-| loading | boolean   | Is data loading          |
-| error   | Error     | Error shortening URL     |
-| data    | BitlyLink | Data returned from Bitly |
+| Name        | Type      | Description              |
+| ----------- | --------- | ------------------------ |
+| **loading** | boolean   | Is data loading          |
+| **error**   | Error     | Error shortening URL     |
+| **data**    | BitlyLink | Data returned from Bitly |
+| **refetch**    | TODO | TODO |
+| **status**    | TODO | TODO |
 
 ## Example
 
-**• Import `ShortenUrlProvider` from library in your React app, wrap main component and set config values:**
+**• Import `ShortenUrlProvider` from the library in your React app, wrap the component and set the config values:**
 
 ```js
 // index.js
@@ -81,7 +83,7 @@ ReactDOM.render(
 );
 ```
 
-**• Then use `useShortenUrl` Hook:**
+**• Then use the `useShortenUrl` Hook:**
 
 ```js
 // App.js
